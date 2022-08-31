@@ -36,11 +36,22 @@ const StageComponent = () => {
 
     const getWidthHeight = (e) => {
         if (e.type === "mousedown") {
+            console.log(e);
             x = e.clientX;
             a = e.clientY;
-        } else {
+        } else if (e.type === "touchstart") {
+            console.log(e);
+            x = e.changedTouches[0].clientX;
+            a = e.changedTouches[0].clientY;
+        } else if (e.type === "mouseup") {
             y = e.clientX;
             b = e.clientY;
+            c = a - b;
+            z = x - y;
+            createSquare();
+        } else if (e.type === "touchend") {
+            y = e.changedTouches[0].clientX;
+            b = e.changedTouches[0].clientY;
             c = a - b;
             z = x - y;
             createSquare();
@@ -64,6 +75,8 @@ const StageComponent = () => {
             className="background"
             onMouseDown={(e) => getWidthHeight(e)}
             onMouseUp={(e) => getWidthHeight(e)}
+            onTouchStart={(e) => getWidthHeight(e)}
+            onTouchEnd={(e) => getWidthHeight(e)}
         >
             <Stage
                 width={window.innerWidth}

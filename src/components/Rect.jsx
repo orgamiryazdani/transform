@@ -22,6 +22,11 @@ const Rectangle = ({ shapeProps, removeSquare, isSelected, onSelect, onChange })
                 {...shapeProps}
                 draggable
                 onMouseDown={() => removeSquare()}
+
+                
+                onTouchStart={() => removeSquare()}
+                onTouchEnd={() => removeSquare()}
+
                 onMouseUp={() => removeSquare()}
                 onDragEnd={(e) => {
                     onChange({
