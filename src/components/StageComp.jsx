@@ -36,11 +36,9 @@ const StageComponent = () => {
 
     const getWidthHeight = (e) => {
         if (e.type === "mousedown") {
-            console.log(e);
             x = e.clientX;
             a = e.clientY;
         } else if (e.type === "touchstart") {
-            console.log(e);
             x = e.changedTouches[0].clientX;
             a = e.changedTouches[0].clientY;
         } else if (e.type === "mouseup") {
